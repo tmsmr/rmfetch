@@ -5,9 +5,9 @@ WORKDIR /build
 RUN GOOS=linux GOARCH=amd64 go build
 
 FROM alpine:3.16
-COPY --from=builder /build/rmfetchd /rmfetchd
 RUN adduser -D -g '' rmfetchd
 USER rmfetchd
 ENV GIN_MODE=release
 EXPOSE 8080
 CMD ["/rmfetchd"]
+COPY --from=builder /build/rmfetchd /rmfetchd

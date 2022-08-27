@@ -11,7 +11,7 @@ import (
 )
 
 type EnvSpec struct {
-	RMApiDeviceCode string `envconfig:"RMAPI_DEVICE_CODE" required:"true"`
+	RMApiDeviceCode string `envconfig:"RMAPI_DEVICE_CODE"`
 	RMRLAasBaseUrl  string `envconfig:"RMRL_BASE_URL"`
 }
 
@@ -107,11 +107,12 @@ func genPDF(c *gin.Context) {
 func main() {
 	r := gin.Default()
 
-	//r.StaticFile("/index.html", "./static/index.html")
+	// make healthchecks happy
+	r.GET("/", func(c *gin.Context) {})
 
-	r.GET("/docs", listDocs)
-	r.GET("/docs/:id/zip", fetchDoc)
-	r.GET("/docs/:id/pdf", genPDF)
+	r.GET("/documents", listDocs)
+	r.GET("/documents/:id/zip", fetchDoc)
+	r.GET("/documents/:id/pdf", genPDF)
 
 	_ = r.Run()
 }
