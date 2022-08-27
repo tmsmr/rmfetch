@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/juruen/rmapi/api"
+	"github.com/juruen/rmapi/config"
 	"github.com/juruen/rmapi/model"
 	"io"
 	"mime/multipart"
@@ -30,8 +31,10 @@ type RMCloud struct {
 }
 
 func New() (*RMCloud, error) {
-	if code, ok := os.LookupEnv("RMAPI_DEVICE_CODE"); !ok || len(code) != 8 {
-		return nil, ErrMissingCode
+	if _, err := os.Stat(config.ConfigPath()); err != nil {
+		if code, ok := os.LookupEnv("RMAPI_DEVICE_CODE"); !ok || len(code) != 8 {
+			return nil, ErrMissingCode
+		}
 	}
 	trans := api.AuthHttpCtx(false, true)
 	ctx, _, err := api.CreateApiCtx(trans)
