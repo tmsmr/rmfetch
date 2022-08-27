@@ -4,7 +4,7 @@ go 1.19
 
 require github.com/juruen/rmapi v0.0.20
 
-replace github.com/juruen/rmapi => github.com/tmsmr/rmapi v0.0.0-20220827075443-2a6d0872348d
+replace github.com/juruen/rmapi => github.com/tmsmr/rmapi v0.0.0-20220827102922-3e0fb6257d31
 
 require (
 	github.com/adrg/strutil v0.1.0 // indirect
