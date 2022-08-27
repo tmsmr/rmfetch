@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  rmfetchd:
+    build: .
+    ports:
+      - "80:8080"
+    environment:
+      RMAPI_DEVICE_CODE: "xxxxxxxx"
+      RMRL_BASE_URL: "http://rmrl-aas:8080"
+    volumes:
+      - ./rmapi:/home/rmfetchd/.config/rmapi
+  rmrl-aas:
+    image: ghcr.io/tmsmr/rmrl-aas:v0.2.1
