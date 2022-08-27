@@ -2,11 +2,9 @@ module github.com/tmsmr/rmfetch
 
 go 1.19
 
-require (
-	github.com/golang-jwt/jwt/v4 v4.4.2
-	github.com/google/uuid v1.3.0
-	github.com/juruen/rmapi v0.0.20
-)
+require github.com/juruen/rmapi v0.0.20
+
+replace github.com/juruen/rmapi => github.com/tmsmr/rmapi v0.0.0-20220827075443-2a6d0872348d
 
 require (
 	github.com/adrg/strutil v0.1.0 // indirect
@@ -15,6 +13,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
+	github.com/google/uuid v1.1.1 // indirect
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/satori/go.uuid v0.0.0-20180103174451-36e9d2ebbde5 // indirect
